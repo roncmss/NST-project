@@ -3,16 +3,17 @@
 
 # import the necessary packages
 import argparse
-import imutils
 import time
+
 import cv2
+import imutils
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-m", "--model", required=True,
-	help="neural style transfer model")
+                help="neural style transfer model")
 ap.add_argument("-i", "--image", required=True,
-	help="input image to apply neural style transfer to")
+                help="input image to apply neural style transfer to")
 args = vars(ap.parse_args())
 
 # load the neural style transfer model from disk
@@ -28,7 +29,7 @@ image = imutils.resize(image, width=600)
 # construct a blob from the image, set the input, and then perform a
 # forward pass of the network
 blob = cv2.dnn.blobFromImage(image, 1.0, (w, h),
-	(103.939, 116.779, 123.680), swapRB=False, crop=False)
+                             (103.939, 116.779, 123.680), swapRB=False, crop=False)
 net.setInput(blob)
 start = time.time()
 output = net.forward()
@@ -45,7 +46,7 @@ output = output.transpose(1, 2, 0)
 
 # show information on how long inference took
 print("[INFO] neural style transfer took {:.4f} seconds".format(
-	end - start))
+    end - start))
 
 # show the images
 cv2.imshow("Input", image)
