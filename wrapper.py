@@ -1,4 +1,3 @@
-
 import os
 
 cameraCommand = "python3 neural_style_transfer_video.py --models models"
@@ -12,4 +11,5 @@ if __name__ == "__main__":
     elif userChoice == 2:
         os.system(cameraCommand)
     else:
+        # Dummy change
         raise ValueError("you suck!")
