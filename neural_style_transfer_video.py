@@ -13,13 +13,16 @@ from imutils.video import VideoStream
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-m", "--models", required=True,
-                help="path to directory containing neural style transfer models")
+ap.add_argument(
+    "-m",
+    "--models",
+    required=True,
+    help="path to directory containing neural style transfer models")
 args = vars(ap.parse_args())
 
 # grab the paths to all neural style transfer models in our 'models'
 # directory, provided all models end with the '.t7' file extension
-modelPaths = paths.list_files(args["models"], validExts=(".t7",))
+modelPaths = paths.list_files(args["models"], validExts=(".t7", ))
 modelPaths = sorted(list(modelPaths))
 
 # generate unique IDs for each of the model paths, then combine the
@@ -55,8 +58,10 @@ while True:
 
     # construct a blob from the frame, set the input, and then perform a
     # forward pass of the network
-    blob = cv2.dnn.blobFromImage(frame, 1.0, (w, h),
-                                 (103.939, 116.779, 123.680), swapRB=False, crop=False)
+    blob = cv2.dnn.blobFromImage(frame,
+                                 1.0, (w, h), (103.939, 116.779, 123.680),
+                                 swapRB=False,
+                                 crop=False)
     net.setInput(blob)
     output = net.forward()
 
